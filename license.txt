@@ -1,0 +1,24 @@
+aaaaaaaaaa bbbbbbbbbb nnnnnnnnnnn
+sdasda aaaaaaa jjjjjjjj llllllllll \
+fff
+
+keytool -export -alias client -keystore F:/keys/client.p12 -storetype PKCS12 -keypass 123456 -file F:/keys/client.cer
+
+keytool -import -v -file F:/keys/client.cer -keystore F:/keys/tomcat.keystor e -storepass 123456
+
+keytool -list -v -keystore F:/keys/tomcat.keystore
+
+keytool -export -file F:/keys/keycard.crt -alias tomcat -keystore F:/keys/tomcat.keystore
+
+keytool -import -keystore C:/"Program Files"/java2/jdk/lib/security/cacerts -file F:/keys/keycard.crt -alias tomcat
+
+Keystore was tampered with
+
+keytool -import -keystore F:/java/jdk1.8.0_111/jre/lib/security/cacerts -file C:/common/keys/keycard.crt -alias mycacerts
+
+F:/java/jdk1.8.0_111/jre/lib/security
+
+使用keytool工具删除证书时出现Java.io.IOException: Keystore was tampered with, or password was incorrect 异常的解决办法：
+对于很多服务器比如glassfish或者tomcat之类的，在证书过期，我们需要删除时，需要输入保护密码，默认的就是changeit，输入这个密码就可以了。
+
+C:\Program Files\Java\jdk1.7.0_17
